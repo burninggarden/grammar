@@ -7,8 +7,6 @@
 
 set -e
 
-mkdir -p dist
-
 if [[ $1 == '--verify' ]]; then
 	if [ ! -f dist/.last-compile-time ]; then
 		exit 1
@@ -26,6 +24,10 @@ if [[ $1 == '--verify' ]]; then
 		exit 1
 	fi
 
+	exit 0
+fi
+
+if [[ -f ./dist/.last-publish-time ]]; then
 	exit 0
 fi
 

@@ -24,7 +24,7 @@ describe('singularize()', () => {
 
 		expect(result).toStrictEqual('loot');
 	});
-}
+});
 
 describe('pluralize()', () => {
 	it('returns the expected form for a generic noun', () => {

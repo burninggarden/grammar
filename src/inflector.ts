@@ -1,5 +1,5 @@
 
-const SINGULAR_TO_PLURAL_MAP = {
+const SINGULAR_TO_PLURAL_MAP: {[key: string]: string;} = {
 	loot: 'loot'
 };
 
@@ -28,12 +28,12 @@ class Inflector {
 		}
 
 		if (singularForm.slice(-1) === 'y') {
-			if (!isVowel(singularForm.slice(-2, -1))) {
+			if (!this.isVowel(singularForm.slice(-2, -1))) {
 				return singularForm.slice(0, -1) + 'ies';
 			}
 		}
 
-		if (singularForm.slice(-1) === 'ch') {
+		if (singularForm.slice(-2) === 'ch') {
 			return singularForm + 'es';
 		}
 
@@ -61,11 +61,21 @@ class Inflector {
 		amount: string | number,
 		suffix: string
 	): string {
-		if (parseFloat(amount) === 1) {
-			return amount + ' ' + suffix;
+		if (typeof amount === 'string') {
+			amount = parseFloat(amount);
 		}
 
-		return amount + ' ' + pluralize(suffix);
+		if (amount === 1) {
+			return `${amount} ${suffix}`;
+		}
+
+		const pluralSuffix = this.pluralize(suffix);
+
+		return `${amount} ${pluralSuffix}`;
+	}
+
+	private static isVowel(letter: string): boolean {
+		return /[aeiou]/.test(letter.toLowerCase());
 	}
 }
 
