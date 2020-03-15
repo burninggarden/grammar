@@ -1,7 +1,7 @@
 {
   "name": "@burninggarden/grammar",
   "description": "A set of utilities for interacting with words.",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "private": false,
   "author": "Burning Garden",
   "homepage": "https://burninggarden.com",
